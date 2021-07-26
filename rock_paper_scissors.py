@@ -1,21 +1,21 @@
+#Update 1.2
+
 import time
 import random
 
-#first 2 print statements are just introductions and rules
 print ("Hello! Welcome to rock paper scissors!")
-print ("First, you will either choose - rock, paper, or scissors\n Then, the computer will randomly choose a choice (trust me it is random)")
+print ("First, you will either choose - rock, paper, or scissors\nThen, the computer will randomly choose a choice")
+ 
+time.sleep(3.0)
 
-#gives user time to read the intro and then automatically starts the game 
-time.sleep(0.5)
-
-choice = input("Please choose a choice. Type here: ")
-options = ["Rock", "Paper", "Scissors"]
-
-#Stores the random choice in the variable "a"
-a = (random.choice(options))
-
-print ("You chose: ",choice)
-print ("The computer chose: ",a)
+def beginning():
+    global choice
+    global a
+    choice = input("Please choose a choice. Type here: ")
+    options = ["Rock", "Paper", "Scissors"]
+    a = (random.choice(options))
+    print ("You chose: ",choice)
+    print ("The computer chose: ",a)
 
 
 def rankings():
@@ -32,11 +32,19 @@ def rankings():
     elif choice == "scissors" and a == "Paper":
         print ("You win!")
     else:
-        print ("It's a tie!")                  
+        print ("It's a tie!")                          
 
+beginning()
 rankings()
+def infinite():    
+    replay = input("Would you like to play again? Type here: ")
+    if replay == "Yes" or replay == "yes":
+        beginning()
+        rankings()
+        infinite() 
+    elif replay == "No" or replay == "no":
+        print ("Ok!")
+    else:
+        print ("Please try again")     
 
-#This project is subject to future updates!! These include (but not limited to): 
-#Adding a replay feature
-#Canceling the round if you spell something wrong
-#Adding rock paper scissors lizard spock
+infinite()
